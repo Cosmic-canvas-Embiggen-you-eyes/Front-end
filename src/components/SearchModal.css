@@ -1,0 +1,160 @@
+/* SearchModal.css */
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+
+  gap: 8px;
+}
+
+.search-bar input {
+  border: none;
+  background: transparent;
+  color: #4e4141;
+  outline: none;
+}
+
+.search-bar button {
+  background: #3b82f6;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: #fff;
+  color: #111;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+.modal h2 {
+  margin-bottom: 10px;
+}
+
+.modal button {
+  margin-top: 15px;
+  padding: 8px 14px;
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.searchmod {
+  position: absolute;
+  left: 563px;
+  top: 64px;
+  padding: 20px;
+  width: 280px;
+  max-height: 400px;
+  overflow-y: auto;
+  max-width: 90%;
+  background: linear-gradient(
+    135deg,
+    rgba(11, 61, 145, 0.95) 0%,
+    rgba(23, 26, 68, 0.95) 100%
+  );
+  border: 1px solid rgba(0, 169, 255, 0.4);
+  border-radius: 15px;
+  box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px 3px #a78bfa;
+  color: #fff;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  transition: left 0.3s ease, width 0.3s ease;
+}
+
+/* Scrollbar داخل الكارد */
+.searchmod::-webkit-scrollbar {
+  width: 8px;
+}
+
+.searchmod::-webkit-scrollbar-track {
+  background: rgba(31, 41, 55, 0.8);
+  border-radius: 8px;
+}
+
+.searchmod::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #2563eb, #7c3aed);
+  border-radius: 8px;
+}
+
+.searchmod::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #1d4ed8, #6d28d9);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1024px) {
+  .searchmod {
+    left: 50%;
+    /* transform: translateX(-50%); */
+    top: 60px;
+    width: 280px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .searchmod {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 60px;
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .searchmod {
+    width: 95%;
+    padding: 15px;
+  }
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Text styling */
+.searchmod h3 {
+  color: #00a9ff;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.searchmod p {
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #cccccc;
+}

@@ -1,0 +1,43 @@
+/* src/components/ImageSelectionTool.css */
+.image-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.image-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  background: rgba(0, 169, 255, 0.1);
+  border: 1px solid rgba(0, 169, 255, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.image-item:hover {
+  background: rgba(0, 169, 255, 0.2);
+  transform: translateX(5px);
+}
+
+.image-item.active {
+  background: rgba(252, 61, 33, 0.3);
+  border-color: rgba(252, 61, 33, 0.8);
+  box-shadow: 0 0 10px rgba(252, 61, 33, 0.5);
+}
+
+.item-thumbnail {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.item-name {
+  font-size: 14px;
+  color: #ffffff;
+}

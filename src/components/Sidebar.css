@@ -1,0 +1,707 @@
+/* Sidebar container */
+.sidebar-container {
+  position: relative;
+  /* display: none; */
+}
+
+/* Sidebar dock styling */
+.sidebar-dock {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    135deg,
+    rgba(11, 61, 145, 0.8) 0%,
+    rgba(23, 26, 68, 0.9) 100%
+  );
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 169, 255, 0.3);
+  border-radius: 30px;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), 0 0 20px 5px #a78bfa;
+  z-index: 1000;
+}
+
+.icon-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar-icon {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #cccccc;
+  background: rgba(11, 61, 145, 0.3);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid rgba(0, 169, 255, 0.2);
+}
+
+.sidebar-icon:hover {
+  background: linear-gradient(135deg, #0b3d91 0%, #6e21fc 100%);
+  color: #ffffff;
+  transform: scale(1.15);
+  box-shadow: 0 0 15px 3px rgba(0, 169, 255, 0.6),
+    inset 0 0 10px 2px rgba(255, 255, 255, 0.4);
+}
+
+.sidebar-icon.active {
+  background: linear-gradient(135deg, #6e21fc 0%, #0b3d91 100%);
+  color: #ffffff;
+  box-shadow: 0 0 20px 5px #a78bfa, inset 0 0 15px 3px rgba(255, 255, 255, 0.4);
+}
+
+.magic-card {
+  position: absolute;
+  right: calc(100% + 15px);
+  top: 50%;
+  padding: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(11, 61, 145, 0.95) 0%,
+    rgba(23, 26, 68, 0.95) 100%
+  );
+  border: 1px solid rgba(0, 169, 255, 0.4);
+  border-radius: 15px;
+  box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px 3px #a78bfa;
+  width: 280px;
+  opacity: 0;
+  transform: translateY(-50%) translateX(10px);
+  animation: cardFadeIn 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+  pointer-events: none;
+  z-index: -1;
+  backdrop-filter: blur(10px);
+}
+
+.magic-card::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid rgba(11, 61, 145, 0.95);
+}
+
+@keyframes cardFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+.magic-sentence {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 10px 0;
+  color: #ffffff;
+  line-height: 1.6;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.tool-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #00a9ff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 3px 8px;
+  background: rgba(128, 33, 252, 0.5);
+  border-radius: 4px;
+}
+
+/* Smart Drawer styling */
+.smart-drawer {
+  position: absolute;
+  top: 50%;
+  right: 98px;
+  transform: translateY(-50%);
+  background: rgba(23, 26, 68, 0.95);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 169, 255, 0.3);
+  border-radius: 15px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.close-drawer {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.close-drawer:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Tool interface styling */
+.tool-interface h3 {
+  color: #00a9ff;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.tool-interface p {
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #cccccc;
+}
+
+/* Layer cards */
+.layer-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.layer-card {
+  background: rgba(0, 169, 255, 0.1);
+  border: 1px solid rgba(0, 169, 255, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.layer-card:hover {
+  background: rgba(0, 169, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.layer-icon {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.layer-card span {
+  font-size: 12px;
+  color: #ffffff;
+}
+
+/* Label preview */
+.label-preview input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 169, 255, 0.3);
+  border-radius: 6px;
+  padding: 8px;
+  color: white;
+}
+
+/* Story examples */
+.story-examples {
+  display: flex;
+  gap: 10px;
+}
+
+.story-sample {
+  background: rgba(0, 169, 255, 0.1);
+  border: 1px solid rgba(0, 169, 255, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.story-sample:hover {
+  background: rgba(0, 169, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.story-image {
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 169, 255, 0.3);
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+.story-sample span {
+  font-size: 12px;
+  color: #ffffff;
+}
+
+/* Timeline selector */
+.timeline-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.date-selector {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-selector label {
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: #cccccc;
+}
+
+.date-selector input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 169, 255, 0.3);
+  border-radius: 6px;
+  padding: 8px;
+  color: white;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .sidebar-dock {
+    right: 10px;
+    padding: 10px 5px;
+    gap: 15px;
+  }
+
+  .sidebar-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .magic-card {
+    width: 220px;
+    padding: 15px;
+  }
+
+  .magic-sentence {
+    font-size: 14px;
+  }
+}
+
+.sidebar-dock {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    135deg,
+    rgba(11, 61, 145, 0.8) 0%,
+    rgba(23, 26, 68, 0.9) 100%
+  );
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 169, 255, 0.3);
+  border-radius: 30px;
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), 0 0 20px 5px #a78bfa;
+  z-index: 1000;
+}
+
+.icon-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar-icon {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-secondary);
+  background: rgba(11, 61, 145, 0.3);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid rgba(0, 169, 255, 0.2);
+}
+
+.sidebar-icon:hover {
+  background: linear-gradient(
+    135deg,
+    var(--nasa-blue) 0%,
+    var(--nasa-red) 100%
+  );
+  color: var(--text-primary);
+  transform: scale(1.15);
+  box-shadow: 0 0 15px 3px rgba(0, 169, 255, 0.6),
+    inset 0 0 10px 2px rgba(255, 255, 255, 0.3);
+}
+
+.sidebar-icon.active {
+  background: linear-gradient(
+    135deg,
+    var(--nasa-red) 0%,
+    var(--nasa-blue) 100%
+  );
+  color: var(--text-primary);
+  box-shadow: 0 0 20px 5px #a78bfa, inset 0 0 15px 3px rgba(255, 255, 255, 0.4);
+}
+
+.magic-card {
+  position: absolute;
+  right: calc(100% + 15px);
+  top: 50%;
+  padding: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(11, 61, 145, 0.95) 0%,
+    rgba(23, 26, 68, 0.95) 100%
+  );
+  border: 1px solid rgba(0, 169, 255, 0.4);
+  border-radius: 15px;
+  box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px 3px #a78bfa;
+  width: 280px;
+  opacity: 0;
+  transform: translateY(-50%) translateX(10px);
+  animation: cardFadeIn 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+  pointer-events: none;
+  z-index: -1;
+  backdrop-filter: blur(10px);
+}
+
+.magic-card::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid rgba(11, 61, 145, 0.95);
+}
+
+@keyframes cardFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+.magic-sentence {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 10px 0;
+  color: var(--text-primary);
+  line-height: 1.6;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.tool-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent-glow);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 3px 8px;
+  background: rgba(128, 33, 252, 0.5);
+  border-radius: 4px;
+}
+
+.sidebar-dock::before {
+  /* content: "NASA"; */
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--nasa-red);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 10px;
+  border-radius: 10px;
+  letter-spacing: 1px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .sidebar-dock {
+    right: 10px;
+    padding: 10px 5px;
+    gap: 15px;
+  }
+
+  .sidebar-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .magic-card {
+    width: 220px;
+    padding: 15px;
+  }
+
+  .magic-sentence {
+    font-size: 14px;
+  }
+}
+
+/* Add these new styles to your existing Sidebar.css */
+
+.tool-interface {
+  padding: 15px;
+  color: #e0e0e0;
+}
+
+.tool-interface h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
+}
+
+.layer-groups {
+  max-height: calc(100vh - 150px); /* Adjust based on your layout */
+  overflow-y: auto;
+}
+
+.layer-group {
+  margin-bottom: 20px;
+}
+
+.layer-group h4 {
+  margin-bottom: 10px;
+  color: #a0cfff; /* A nice highlight color */
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.layer-item {
+  margin-bottom: 8px;
+}
+
+.layer-item label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.layer-item input[type="checkbox"] {
+  margin-right: 10px;
+  /* Simple custom checkbox style */
+  appearance: none;
+  background-color: #333;
+  border: 1px solid #555;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.layer-item input[type="checkbox"]:checked {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.layer-item input[type="checkbox"]:checked::after {
+  content: "✔";
+  position: absolute;
+  top: -1px;
+  left: 2px;
+  color: white;
+  font-size: 14px;
+}
+
+.experience-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.layer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.layer-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* Compact LayersControl aligned with sidebar */
+.leaflet-control-layers {
+  background: #1f1f2e;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #f5f5f5;
+  max-height: 180px;
+  overflow-y: auto;
+  border: 1px solid #3b82f6;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Labels */
+.leaflet-control-layers-base label,
+.leaflet-control-layers-overlays label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 4px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+/* Hover effect */
+.leaflet-control-layers label:hover {
+  background: rgba(59, 130, 246, 0.25);
+}
+
+/* Checkboxes and radios */
+.leaflet-control-layers input[type="checkbox"],
+.leaflet-control-layers input[type="radio"] {
+  accent-color: #3b82f6;
+  width: 14px;
+  height: 14px;
+}
+
+/* Scrollbar */
+.leaflet-control-layers::-webkit-scrollbar {
+  width: 5px;
+}
+
+.leaflet-control-layers::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 3px;
+}
+
+/* Add this to your existing Sidebar.css file */
+
+/* Game Icon Special Styling */
+.game-icon {
+  position: relative;
+  animation: gameGlow 2s ease-in-out infinite;
+}
+
+.game-icon::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(45deg, #00a9ff, #581c87, #00a9ff);
+  background-size: 400% 400%;
+  border-radius: 50%;
+  opacity: 0;
+  animation: gameIconPulse 3s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes gameGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 5px rgba(0, 169, 255, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(88, 28, 135, 0.8));
+  }
+}
+
+@keyframes gameIconPulse {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+.sidebar-icon.game-icon:hover {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.sidebar-icon.game-icon:hover::before {
+  animation: gameIconPulse 1s ease-in-out infinite;
+}
+
+/* تخصيص الاسكرولار في layers */
+.tool-interface::-webkit-scrollbar {
+  width: 8px;
+}
+
+.tool-interface::-webkit-scrollbar-track {
+  background: rgba(31, 41, 55, 0.8); /* غامق */
+  border-radius: 8px;
+}
+
+.tool-interface::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #2563eb, #7c3aed);
+  border-radius: 8px;
+}
+
+.tool-interface::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #1d4ed8, #6d28d9);
+}
+
+/* file: LabelTool.css */
+.save-btn {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  background: linear-gradient(to right, #1e3a8a, #581c87);
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(0);
+}
+
+/* hover effect */
+.save-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* show pressed state */
+.save-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18);
+  opacity: 0.95;
+}

@@ -1,0 +1,141 @@
+.nasa-logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 2px;
+
+  background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+  animation: glowPulse 2s ease-in-out infinite;
+  z-index: 2000;
+}
+
+
+.profile-btn {
+  position: absolute;
+  top: 55px;
+  left: 29px;
+  color: white;
+  background: linear-gradient(
+    to bottom right,
+    rgba(30, 58, 138, 0.6),
+    rgba(88, 28, 135, 0.6),
+    rgba(160, 159, 159, 0.6)
+  );
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  border: none;
+  cursor: pointer;
+}
+
+.map-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.search-container {
+  z-index: 2000;
+}
+
+.date-control {
+  z-index: 2000;
+}
+
+.date-box {
+  cursor: pointer;
+}
+
+.zoom-control {
+  z-index: 2000;
+}
+
+.label-cursor {
+  position: fixed;
+  font-size: 24px;
+  color: red;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 3000;
+}
+
+.points-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 215, 0, 0.9); /* لون ذهب شفاف أخف */
+  padding: 8px 14px; /* أصغر */
+  border-radius: 14px; /* أنعم */
+  font-weight: 600;
+  color: black;
+  font-size: 18px; /* أصغر */
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* أخف ظل */
+}
+
+.points-recent {
+  color: white;
+  background: rgba(255, 152, 0, 0.9); /* أخف */
+  padding: 2px 6px;
+  border-radius: 6px; /* أنعم */
+  font-size: 14px; /* أصغر */
+  animation: pop 0.8s ease forwards;
+}
+
+@keyframes pop {
+  0% {
+    transform: translateY(-8px) scale(0.6);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-16px) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-24px) scale(1);
+    opacity: 0;
+  }
+}
+
+/* تخصيص الاسكرولار في الرسائل */
+.chatbot-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chatbot-messages::-webkit-scrollbar-track {
+  background: rgba(31, 41, 55, 0.8);
+  border-radius: 8px;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #2563eb, #7c3aed);
+  border-radius: 8px;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #1d4ed8, #6d28d9);
+}
